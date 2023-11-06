@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./MovieModal.css";
+import useOnClickOutSide from "../../hooks/useOnClickOutside";
 
 const MovieModal = ({
   backdrop_path,
@@ -11,10 +12,17 @@ const MovieModal = ({
   firtst_air_date,
   setModalOpen,
 }) => {
+  //modal DOM요소를 잡아주기 위해 useRef객체 생성
+  const ref = useRef();
+
+  //useOnClickOutSide Hook 호출
+  useOnClickOutSide(ref, () => {
+    setModalOpen(false);
+  });
   return (
     <div className="presentation" role="presentation">
       <div className="wraper-modal">
-        <div className="modal">
+        <div className="modal" ref={ref}>
           <span className="modal__close" onClick={() => setModalOpen(false)}>
             X
           </span>
