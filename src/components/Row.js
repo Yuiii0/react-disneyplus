@@ -8,8 +8,11 @@ const Row = ({ title, id, fetchUrl }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [movieSelected, setmovieSelected] = useState({});
 
+  //poster 클릭시
   function handleClick(movie) {
+    //modal 띄우기
     setModalOpen(true);
+    //어떤 movie를 선택했는지 정보 저장
     setmovieSelected(movie);
   }
 
@@ -59,6 +62,7 @@ const Row = ({ title, id, fetchUrl }) => {
         </div>
       </div>
       {modalOpen && (
+        //클릭된 movie정보를 전개해서 넘겨주고, x버튼 누르면 modalopen설정 가능하도록
         <MovieModal {...movieSelected} setModalOpen={setModalOpen} />
       )}
     </div>

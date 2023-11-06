@@ -10,7 +10,6 @@ const MovieModal = ({
   vote_average,
   firtst_air_date,
   setModalOpen,
-  modalOpen,
 }) => {
   return (
     <div className="presentation" role="presentation">

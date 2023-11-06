@@ -8,9 +8,11 @@ const Nav = () => {
   const [searchValue, setsearchValue] = useState("");
   let navigate = useNavigate();
 
+  //scroll event처리: useEffect로 관리
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
+      //unmount시, eventListner 해제
       window.removeEventListener("scroll", handleScroll);
     };
   }, []); //렌더링시 한번만 실행되도록
@@ -22,9 +24,11 @@ const Nav = () => {
       setShow(false);
     }
   };
-
+  //검색창을 입력하면
   const handleChange = (e) => {
+    //값을 state에 저장
     setsearchValue(e.target.value);
+    ///search?q=검색어로 이동
     navigate(`/search?q=${e.target.value}`);
   };
 
